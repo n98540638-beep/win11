@@ -1,0 +1,63 @@
+:root {
+    --mica-bg: rgba(255, 255, 255, 0.7);
+    --taskbar-bg: rgba(243, 243, 243, 0.85);
+    --accent: #0078d4;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    background: url('https://raw.githubusercontent.com/blueedgetechno/windows11/master/public/img/wallpaper/default/img0.jpg') center/cover;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+}
+
+/* Görev Çubuğu */
+#taskbar {
+    position: fixed; bottom: 0; width: 100%; height: 48px;
+    background: var(--taskbar-bg); backdrop-filter: blur(20px);
+    display: flex; justify-content: space-between; align-items: center;
+    z-index: 1000; border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.taskbar-container {
+    position: absolute; left: 50%; transform: translateX(-50%);
+    display: flex; align-items: center; height: 100%;
+}
+
+.tb-icon {
+    width: 30px; height: 30px; padding: 6px;
+    transition: all 0.2s cubic-bezier(0.1, 0.9, 0.2, 1);
+}
+
+.tb-icon:hover { background: white; border-radius: 4px; transform: scale(1.1); }
+
+/* Başlat Menüsü */
+#start-menu {
+    position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%) translateY(100vh);
+    width: 520px; height: 600px; background: var(--mica-bg);
+    backdrop-filter: blur(40px); border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.3); transition: transform 0.4s cubic-bezier(0.1, 0.9, 0.2, 1);
+    z-index: 999;
+}
+
+#start-menu.show { transform: translateX(-50%) translateY(0); }
+
+/* Pencere (Window) Tasarımı */
+.window {
+    position: absolute; width: 600px; height: 400px;
+    background: white; border-radius: 8px; box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+    display: flex; flex-direction: column; overflow: hidden;
+}
+
+.win-titlebar {
+    height: 40px; background: #f3f3f3; display: flex;
+    justify-content: space-between; align-items: center; padding: 0 12px;
+    cursor: default;
+}
+
+.win-controls div {
+    display: inline-block; width: 35px; text-align: center; line-height: 40px; cursor: pointer;
+}
+
+.win-controls .close:hover { background: #e81123; color: white; }
