@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Hatası</title>
+    <style>
+        :root { --win-blue: #0078d7; }
+        
+        body, html {
+            background-color: var(--win-blue);
+            color: white;
+            font-family: "Segoe UI", Tahoma, sans-serif;
+            margin: 0; padding: 0; height: 100vh;
+            overflow: hidden; cursor: none;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        .container { width: 80%; max-width: 900px; }
+        .sad-face { font-size: 120px; margin-bottom: 20px; }
+        .main-text { font-size: 24px; line-height: 1.5; margin-bottom: 30px; font-weight: 300; }
+        
+        .qr-area { display: flex; gap: 20px; align-items: flex-start; margin-top: 40px; }
+        .qr-code {
+            width: 120px; height: 120px;
+            background: white;
+            /* QR kod yerine Windows stopcode görseli veya beyaz kutu */
+            background-image: url('https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.windows.com/stopcode');
+            background-size: cover;
+        }
+
+        .info-text { font-size: 14px; line-height: 1.6; opacity: 0.9; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="sad-face">:(</div>
+    <div class="main-text">
+        Aradığınız kaynak (Sistem Dosyası) bulunamadı ve bu durum kritik bir hataya yol açtı. 
+        Bilgisayarınız bir sorunla karşılaştı ve yeniden başlatılması gerekiyor.
+    </div>
+    <div class="main-text"><span id="percent">0</span>% tamamlandı</div>
+    
+    <div class="qr-area">
+        <div class="qr-code"></div>
+        <div class="info-text">
+            Bu sorun ve olası düzeltmeler hakkında daha fazla bilgi için ziyaret edin: <br>
+            https://www.windows.com/stopcode <br><br>
+            Desteği aradığınızda şu bilgiyi verin: <br>
+            Durdurma kodu: <b>PAGE_NOT_FOUND_EXCEPTION</b>
+        </div>
+    </div>
+</div>
+
+<script>
+    let p = 0;
+    const pText = document.getElementById('percent');
+
+    function startCounting() {
+        let interval = setInterval(() => {
+            p += Math.floor(Math.random() * 3) + 1;
+            if (p >= 100) {
+                p = 100;
+                clearInterval(interval);
+                setTimeout(() => {
+                    // 100% olduktan 2 saniye sonra ana sayfaya (Windows 11) geri atar
+                    window.location.href = "index.html";
+                }, 2000);
+            }
+            pText.innerText = p;
+        }, 500);
+    }
+
+    // Sayfa yüklendiği gibi başla
+    window.onload = startCounting;
+</script>
+
+</body>
+</html>
