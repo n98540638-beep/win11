@@ -1,63 +1,74 @@
 :root {
-    --mica-bg: rgba(255, 255, 255, 0.7);
-    --taskbar-bg: rgba(243, 243, 243, 0.85);
-    --accent: #0078d4;
+    --mica: rgba(255, 255, 255, 0.75);
+    --taskbar: rgba(243, 243, 243, 0.85);
 }
 
-body {
-    margin: 0;
-    height: 100vh;
-    background: url('https://raw.githubusercontent.com/blueedgetechno/windows11/master/public/img/wallpaper/default/img0.jpg') center/cover;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    overflow: hidden;
+body, html {
+    margin: 0; padding: 0; height: 100%; overflow: hidden;
+    font-family: 'Segoe UI', sans-serif;
+    background: url('https://raw.githubusercontent.com/blueedgetechno/windows11/master/public/img/wallpaper/default/img0.jpg') center/cover no-repeat;
 }
+
+/* Masaüstü */
+#desktop { width: 100vw; height: calc(100vh - 48px); position: relative; padding: 10px; }
+
+.shortcut {
+    width: 80px; text-align: center; color: white; padding: 10px;
+    border-radius: 4px; cursor: default; transition: 0.2s;
+}
+.shortcut:hover { background: rgba(255,255,255,0.1); }
+.shortcut img { width: 40px; display: block; margin: 0 auto 5px; }
+.shortcut span { font-size: 12px; text-shadow: 1px 1px 4px rgba(0,0,0,0.8); }
 
 /* Görev Çubuğu */
 #taskbar {
     position: fixed; bottom: 0; width: 100%; height: 48px;
-    background: var(--taskbar-bg); backdrop-filter: blur(20px);
+    background: var(--taskbar); backdrop-filter: blur(20px);
     display: flex; justify-content: space-between; align-items: center;
-    z-index: 1000; border-top: 1px solid rgba(0,0,0,0.05);
+    z-index: 9999; border-top: 1px solid rgba(0,0,0,0.1);
 }
 
 .taskbar-container {
     position: absolute; left: 50%; transform: translateX(-50%);
-    display: flex; align-items: center; height: 100%;
+    display: flex; gap: 5px;
 }
 
 .tb-icon {
-    width: 30px; height: 30px; padding: 6px;
-    transition: all 0.2s cubic-bezier(0.1, 0.9, 0.2, 1);
+    width: 28px; height: 28px; padding: 7px;
+    transition: all 0.2s; border-radius: 4px;
 }
-
-.tb-icon:hover { background: white; border-radius: 4px; transform: scale(1.1); }
+.tb-icon:hover { background: white; transform: scale(1.1); }
 
 /* Başlat Menüsü */
 #start-menu {
-    position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%) translateY(100vh);
-    width: 520px; height: 600px; background: var(--mica-bg);
-    backdrop-filter: blur(40px); border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.3); transition: transform 0.4s cubic-bezier(0.1, 0.9, 0.2, 1);
-    z-index: 999;
+    position: fixed; bottom: 60px; left: 50%;
+    transform: translateX(-50%) translateY(1000px);
+    width: 520px; height: 580px; background: var(--mica);
+    backdrop-filter: blur(30px); border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.4);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    transition: transform 0.4s cubic-bezier(0.1, 0.8, 0.2, 1);
+    z-index: 999; padding: 30px; box-sizing: border-box;
 }
-
 #start-menu.show { transform: translateX(-50%) translateY(0); }
 
-/* Pencere (Window) Tasarımı */
+.search-bar {
+    width: 100%; padding: 10px 15px; border-radius: 20px;
+    border: 1px solid #ddd; outline: none; margin-bottom: 20px;
+}
+
+.apps-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 15px; margin-top: 20px; }
+.app-item { text-align: center; font-size: 11px; cursor: pointer; }
+.app-item img { width: 32px; margin-bottom: 5px; }
+
+/* Pencere Stili */
 .window {
-    position: absolute; width: 600px; height: 400px;
-    background: white; border-radius: 8px; box-shadow: 0 12px 40px rgba(0,0,0,0.25);
-    display: flex; flex-direction: column; overflow: hidden;
+    position: absolute; width: 500px; height: 350px;
+    background: white; border-radius: 8px; overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3); z-index: 10;
 }
+.win-header { background: #f3f3f3; padding: 10px; display: flex; justify-content: space-between; cursor: move; }
+.close-btn { color: red; cursor: pointer; font-weight: bold; padding: 0 10px; }
 
-.win-titlebar {
-    height: 40px; background: #f3f3f3; display: flex;
-    justify-content: space-between; align-items: center; padding: 0 12px;
-    cursor: default;
-}
-
-.win-controls div {
-    display: inline-block; width: 35px; text-align: center; line-height: 40px; cursor: pointer;
-}
-
-.win-controls .close:hover { background: #e81123; color: white; }
+/* Saat */
+.system-tray { padding-right: 15px; display: flex; gap: 15px; font-size: 12px; align-items: center; }
