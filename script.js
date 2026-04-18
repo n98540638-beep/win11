@@ -1,59 +1,50 @@
-// Sistem Saati
+// Saat Güncelleme
 function updateClock() {
-    const time = new Date().toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' });
-    document.getElementById('clock').textContent = time;
+    const now = new Date();
+    document.getElementById('clock').innerHTML = now.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' });
 }
 setInterval(updateClock, 1000);
 updateClock();
 
-// Başlat Menüsü Toggle
+// Başlat Menüsü Aç/Kapat
 const startBtn = document.querySelector('.start-btn');
 const startMenu = document.getElementById('start-menu');
 
-startBtn.onclick = (e) => {
+startBtn.addEventListener('click', (e) => {
     e.stopPropagation();
     startMenu.classList.toggle('show');
-};
+});
 
-document.body.onclick = () => startMenu.classList.remove('show');
+document.addEventListener('click', () => startMenu.classList.remove('show'));
+startMenu.addEventListener('click', (e) => e.stopPropagation());
 
-// Pencere Oluşturma Sistemi
-let zIndexCount = 100;
-
+// Pencere Oluşturma
 function createWindow(title) {
     const win = document.createElement('div');
     win.className = 'window';
     win.style.top = '100px';
-    win.style.left = '100px';
-    win.style.zIndex = ++zIndexCount;
-
+    win.style.left = '200px';
+    
     win.innerHTML = `
-        <div class="win-titlebar">
+        <div class="win-header">
             <span>${title}</span>
-            <div class="win-controls">
-                <div class="min">_</div>
-                <div class="max">▢</div>
-                <div class="close" onclick="this.closest('.window').remove()">✕</div>
-            </div>
+            <div class="close-btn" onclick="this.parentElement.parentElement.remove()">✕</div>
         </div>
-        <div class="win-content" style="padding:20px;">
-            <h3>Klasör Boş</h3>
-            <p>Bu simülasyon gerçek dosya sistemine erişemez.</p>
+        <div style="padding: 20px;">
+            <p>Windows 11 Simülasyonuna Hoş Geldiniz.</p>
+            <p>Bu bir eğitim ve şaka projesidir.</p>
         </div>
     `;
-
+    
     document.getElementById('desktop').appendChild(win);
-    makeDraggable(win);
+    dragElement(win);
 }
 
-// Sürükleme Fonksiyonu (Daha Smooth)
-function makeDraggable(el) {
+// Sürükleme Fonksiyonu
+function dragElement(elmnt) {
     let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-    const header = el.querySelector('.win-titlebar');
-    
+    const header = elmnt.querySelector('.win-header');
     header.onmousedown = (e) => {
-        zIndexCount++;
-        el.style.zIndex = zIndexCount;
         pos3 = e.clientX;
         pos4 = e.clientY;
         document.onmouseup = () => {
@@ -65,11 +56,8 @@ function makeDraggable(el) {
             pos2 = pos4 - e.clientY;
             pos3 = e.clientX;
             pos4 = e.clientY;
-            el.style.top = (el.offsetTop - pos2) + "px";
-            el.style.left = (el.offsetLeft - pos1) + "px";
+            elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+            elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
         };
     };
 }
-
-// Masaüstü simgesine tıklandığında pencere aç
-document.querySelector('[data-app="pc"]').ondblclick = () => createWindow('Bu Bilgisayar');
