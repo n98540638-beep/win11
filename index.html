@@ -5,12 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Windows 11 Simulator</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS dosyasını yüklerken bozulma ihtimaline karşı ikon boyutlarını buraya da ekliyorum */
+        .shortcut img { width: 40px !important; height: 40px !important; }
+        .tb-icon { width: 28px !important; height: 28px !important; }
+        .app-item img { width: 32px !important; height: 32px !important; }
+    </style>
 </head>
 <body>
 
     <div id="desktop">
         <div class="shortcut" ondblclick="createWindow('Bu Bilgisayar')">
-            <img src="https://raw.githubusercontent.com/blueedgetechno/windows11/master/public/img/icon/win/explorer.png" alt="PC">
+            <img src="https://n98540638-beep.github.io/win11/img/explorer.png" alt="PC">
             <span>Bu Bilgisayar</span>
         </div>
     </div>
@@ -24,10 +30,10 @@
                     <button class="all-apps">Tüm uygulamalar ></button>
                 </div>
                 <div class="apps-grid">
-                    <div class="app-item"><img src="https://raw.githubusercontent.com/blueedgetechno/windows11/master/public/img/icon/win/edge.png"><span>Edge</span></div>
-                    <div class="app-item"><img src="https://raw.githubusercontent.com/blueedgetechno/windows11/master/public/img/icon/win/settings.png"><span>Ayarlar</span></div>
-                    <div class="app-item"><img src="https://raw.githubusercontent.com/blueedgetechno/windows11/master/public/img/icon/win/store.png"><span>Store</span></div>
-                    <div class="app-item"><img src="https://raw.githubusercontent.com/blueedgetechno/windows11/master/public/img/icon/win/mail.png"><span>Posta</span></div>
+                    <div class="app-item"><img src="https://n98540638-beep.github.io/win11/img/edge.png"><span>Edge</span></div>
+                    <div class="app-item"><img src="https://n98540638-beep.github.io/win11/img/settings.png"><span>Ayarlar</span></div>
+                    <div class="app-item"><img src="https://n98540638-beep.github.io/win11/img/store.png"><span>Store</span></div>
+                    <div class="app-item"><img src="https://n98540638-beep.github.io/win11/img/mail.png"><span>Posta</span></div>
                 </div>
             </div>
         </div>
@@ -35,10 +41,10 @@
 
     <nav id="taskbar">
         <div class="taskbar-container">
-            <img class="tb-icon start-btn" src="https://raw.githubusercontent.com/blueedgetechno/windows11/master/public/img/icon/win/home.png" title="Başlat">
-            <img class="tb-icon" src="https://raw.githubusercontent.com/blueedgetechno/windows11/master/public/img/icon/win/search.png" title="Arama">
-            <img class="tb-icon" src="https://raw.githubusercontent.com/blueedgetechno/windows11/master/public/img/icon/win/explorer.png" title="Dosya Gezgini" onclick="createWindow('Bu Bilgisayar')">
-            <img class="tb-icon" src="https://raw.githubusercontent.com/blueedgetechno/windows11/master/public/img/icon/win/edge.png" title="Edge">
+            <img class="tb-icon start-btn" src="https://n98540638-beep.github.io/win11/img/home.png" title="Başlat">
+            <img class="tb-icon" src="https://n98540638-beep.github.io/win11/img/search.png" title="Arama">
+            <img class="tb-icon" src="https://n98540638-beep.github.io/win11/img/explorer.png" title="Dosya Gezgini" onclick="createWindow('Bu Bilgisayar')">
+            <img class="tb-icon" src="https://n98540638-beep.github.io/win11/img/edge.png" title="Edge">
         </div>
         
         <div class="system-tray">
