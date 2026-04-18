@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows 11 Simulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="desktop">
+        <div class="shortcut" data-app="pc">
+            <img src="https://win11.blueedge.me/img/icon/win/explorer.png" alt="PC">
+            <span>Bu Bilgisayar</span>
+        </div>
+
+        </div>
+
+    <div id="start-menu" class="hidden">
+        <div class="start-content">
+            <div class="search-bar">🔍 Uygulama arayın</div>
+            <div class="pinned-apps">
+                <p>Sabitlenenler</p>
+                <div class="apps-grid">
+                    <div class="app-item"><img src="https://win11.blueedge.me/img/icon/win/edge.png"><span>Edge</span></div>
+                    <div class="app-item"><img src="https://win11.blueedge.me/img/icon/win/settings.png"><span>Ayarlar</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav id="taskbar">
+        <div class="taskbar-container">
+            <img class="tb-icon start-btn" src="https://win11.blueedge.me/img/icon/win/home.png" alt="Start">
+            <img class="tb-icon" src="https://win11.blueedge.me/img/icon/win/search.png" alt="Search">
+            <img class="tb-icon" src="https://win11.blueedge.me/img/icon/win/explorer.png" alt="Explorer">
+            <img class="tb-icon" src="https://win11.blueedge.me/img/icon/win/store.png" alt="Store">
+        </div>
+        <div class="system-tray">
+            <div class="tray-icons"><span>ENG</span><span>🌐</span></div>
+            <div class="clock" id="clock">12:00</div>
+        </div>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+</html>
